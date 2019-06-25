@@ -1,0 +1,87 @@
+<ng-container [ngSwitch]="type">
+  <mat-form-field *ngSwitchCase="'select-with-rules'">
+      <mat-select [formControl]="dataCtrl" placeholder="{{placeholder}}" [disabled]="!disabled">
+        <span *ngFor="let option of selectValues">
+          <mat-option [value]="option.value" *ngIf="option.available">
+            {{option.name}}
+          </mat-option>
+        </span>
+        <mat-option *ngIf="selectValues.length === 0" disabled>
+          No Data Found
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="!isValid">
+        Field is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    
+    <mat-form-field *ngSwitchCase="'select'">
+      <mat-select [formControl]="dataCtrl" placeholder="{{placeholder}}" [disabled]="!disabled">
+        <mat-option *ngFor="let option of selectValues" [value]="option.value" [disabled]="!option.available">
+          {{option.name}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="!isValid">
+        Field is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    
+      <mat-form-field *ngSwitchCase="'text-area'">
+        <textarea [formControl]="dataCtrl" [disabled]="disabled" maxlength="256" matInput
+          placeholder="{{placeholder}}">{{value}}</textarea>
+        <mat-hint align="end">{{value?.length || 0}}/256</mat-hint>
+        <mat-error *ngIf="!isValid">
+          Field is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+    
+    <span>
+      <mat-form-field *ngSwitchCase="'text-area-solid'">
+        <textarea [formControl]="dataCtrl" [disabled]="disabled" maxlength="256" matInput
+          placeholder="{{placeholder}}">{{value}}</textarea>
+        <mat-hint align="end">{{value?.length || 0}}/256</mat-hint>
+        <mat-error *ngIf="!isValid">
+          Field is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </span>
+    
+    <mat-form-field class="example-full-width" *ngSwitchCase="'date-picker'">
+      <input matInput [matDatepicker]="picker" placeholder="Choose a date" [matDatepickerFilter]="dateFilters"
+        [formControl]="dataCtrl" [disabled]="!disabled">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="!isDateValid">
+        Invalid Date
+      </mat-error>
+    </mat-form-field>
+    
+    <mat-form-field class="example-full-width" *ngSwitchCase="'input'">
+      <input matInput [formControl]="dataCtrl" placeholder="{{placeholder}}">
+      <mat-error *ngIf="!isValid">
+        Field is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    
+    <mat-form-field class="example-full-width" *ngSwitchCase="'input-liquid'">
+      <input matInput [formControl]="dataCtrl">
+      <mat-error *ngIf="!isDecimal">
+        Invalid number. Please enter valid decimal between 1 and 14.
+      </mat-error>
+    </mat-form-field>
+    
+    <mat-form-field class="example-full-width" *ngSwitchCase="'input-decimal'">
+      <input matInput max="14" min="1" type="number" [formControl]="dataCtrl">
+      <mat-error *ngIf="!isValid">
+        Field is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-radio-group aria-label="Select an option" [formControl]="dataCtrl" *ngSwitchCase="'radio-group'">
+      <span class="radio-group-label" *ngFor="let option of childFields">
+        <mat-radio-button [name]="option.value" [value]="option.value">{{option.label}}
+        </mat-radio-button>
+      </span>
+    </mat-radio-group>
+
+</ng-container>

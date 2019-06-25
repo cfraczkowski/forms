@@ -1,0 +1,14 @@
+<mat-form-field>
+  <mat-select 
+  [formControl]="dataMultiCtrl" 
+  placeholder="{{displayName}}" multiple #multiSelect>
+    <ngx-mat-select-search 
+    [formControl]="dataMultiFilterCtrl" 
+    [placeholderLabel]="'Search'"
+    [noEntriesFoundLabel]="'No matching data found'"
+     ></ngx-mat-select-search>
+    <mat-option *ngFor="let data of filteredDataMulti | async" [value]="data">
+      {{data.name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

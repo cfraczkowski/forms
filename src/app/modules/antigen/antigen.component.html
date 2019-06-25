@@ -1,0 +1,44 @@
+<div class="" fxLayout="row wrap" fxLayoutGap="10px">
+  <div class="panel panel-default" fxFlex="20" >
+    <div class="form-panel clearfix">
+      <form [formGroup]="antigenFilterForm">
+        <div class="panel-header">
+          <h3>Panel Title 1</h3>
+        </div>
+        <ng-container *ngFor="let item of antigenConfig.filterConfig">
+          <div class="value-column" id="antigen-filters__{{item.key}}">
+            <anaconda-form-fields [type]="item.controlType" [placeholder]="item.label"
+              [dataCtrl]="getFilterFormCtrl(item.key)">
+            </anaconda-form-fields>
+          </div>
+        </ng-container>
+      </form>
+    </div>
+  </div>
+
+  <div class="panel panel-default" fxFlex="79">
+    <div class="form-panel clearfix">
+      <form [formGroup]="antigenForm">
+        <div class="panel-header">
+          <h3>Search Antigen</h3>
+        </div>
+        <span fxLayout="row wrap" fxLayoutGap="3rem" >
+          <ng-container *ngFor="let item of antigenConfig.formConfig">
+            <div class="value-column" id="antigen-form__{{item.key}}" fxFlex="{{item.formFieldConfig.width}}">
+              <anaconda-form-fields [type]="item.controlType" [placeholder]="item.label"
+                [dataCtrl]="getFormCtrl(item.key)">
+              </anaconda-form-fields>
+            </div>
+          </ng-container>
+        </span>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="" fxLayout="row wrap" fxLayoutAlign="start center" fxLayoutGap="10px">
+  <div class="panel panel-default " fxFlex="99.7">
+    <p>
+      antigen works!
+    </p>
+  </div>
+</div>

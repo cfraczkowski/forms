@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Anaconda</title>
+  <link rel="icon" type="image/x-icon" href="./assets/img/favicon.ico">
+  <meta http-equiv="expires" content="0">
+  <base href="/">
+</head>
+
+<body id="app-body">
+  <app-root>
+  </app-root>
+  <div class="loading">
+    <h1 class="text-center">Loading...</h1>
+  </div>
+</body>
+<style>
+  .loading {
+    opacity: 0;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: #fff;
+    z-index: -1;
+  }
+  my-app:empty + .loading {
+    opacity: 1;
+    z-index: 100;
+  }
+</style>
+
+</html>

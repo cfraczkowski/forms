@@ -1,0 +1,22 @@
+@import '../../../../style/app.variables.scss';
+
+.navbar{
+    border-bottom: 10px solid $brand-primary;
+    padding-top: 0.666rem;
+}
+nav.navbar{
+    height : $header-height;
+}
+.guide-label{
+    margin-top: 22px;
+    font-style: italic;
+    font-weight: bold;
+    font-family: 'Minion Bold Italic', 'Minion Regular', 'Minion';
+    margin-bottom: 18px;
+    .icon{
+        margin-right: 105px;
+    }
+    .lpf-help{
+        font-size: 32px;
+    }
+}
