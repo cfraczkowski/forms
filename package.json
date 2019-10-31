@@ -28,7 +28,7 @@
     "core-js": "^2.5.4",
     "font-awesome": "^4.7.0",
     "less2sass": "^1.0.3",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.13",
     "ngx-mat-select-search": "^1.7.5",
     "ngx-toastr": "^10.0.4",
     "rxjs": "~6.5.2",
